@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ======================================================
+   TEMA GLOBAL — ROSA (IDENTIDADE DO SITE)
+   ====================================================== */
+@layer base {
+  :root {
+    /* Fundos */
+    --bg: 255 251 253;          /* fundo geral rosado */
+    --surface: 255 255 255;     /* cards */
+    --muted: 252 231 243;       /* rose-100 */
+
+    /* Texto */
+    --text: 17 24 39;           /* neutral-900 */
+    --subtext: 75 85 99;        /* neutral-600 */
+
+    /* Marca */
+    --brand: 219 39 119;        /* rose-600 */
+    --brand-strong: 190 24 93;  /* rose-700 */
+    --brand-soft: 252 231 243;  /* rose-100 */
+
+    /* UI */
+    --border: 229 231 235;      /* neutral-200 */
+    --ring: 244 114 182;        /* rose-400 */
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply antialiased;
+    background: rgb(var(--bg));
+    color: rgb(var(--text));
+  }
+
+  ::selection {
+    background: rgb(var(--brand-soft));
+    color: rgb(var(--brand-strong));
+  }
+
+  a {
+    color: rgb(var(--brand-strong));
+    text-underline-offset: 3px;
+  }
+
+  a:hover {
+    color: rgb(var(--brand));
+  }
+
+  :focus-visible {
+    outline: 3px solid rgb(var(--ring));
+    outline-offset: 2px;
+    border-radius: 12px;
+  }
+}
+
+/* ======================================================
+   SCROLLBAR
+   ====================================================== */
+@layer base {
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(219, 39, 119, 0.25);
+    border-radius: 999px;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(219, 39, 119, 0.4);
+  }
+}
+
+/* ======================================================
+   COMPONENTES GLOBAIS
+   ====================================================== */
+@layer components {
+  /* Containers */
+  .container-page {
+    @apply mx-auto w-full max-w-5xl px-5;
+  }
+
+  /* HERO */
+  .hero-bg {
+    background: linear-gradient(
+      to bottom,
+      rgba(252, 231, 243, 0.75),
+      rgba(255, 255, 255, 1)
+    );
+    border-bottom: 1px solid rgba(219, 39, 119, 0.15);
+  }
+
+  .title-hero {
+    @apply text-4xl font-semibold tracking-tight md:text-5xl;
+  }
+
+  /* Cards */
+  .card {
+    @apply rounded-3xl border bg-white shadow-sm;
+    border-color: rgb(var(--border));
+  }
+
+  .card-muted {
+    @apply rounded-2xl p-4;
+    background: rgb(var(--muted));
+  }
+
+  /* Seções */
+  .section-title {
+    @apply text-2xl font-semibold tracking-tight;
+  }
+
+  .section-subtitle {
+    @apply mt-2 text-sm;
+    color: rgb(var(--subtext));
+  }
+
+  /* Navbar */
+  .nav-link {
+    @apply text-sm transition-colors;
+    color: rgb(var(--subtext));
+  }
+
+  .nav-link:hover {
+    color: rgb(var(--brand-strong));
+  }
+
+  .nav-link-active {
+    color: rgb(var(--brand-strong));
+    font-weight: 500;
+  }
+
+  /* Botões */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-medium transition;
+  }
+
+  .btn-primary {
+    @apply btn text-white shadow-sm;
+    background: rgb(var(--brand));
+  }
+
+  .btn-primary:hover {
+    background: rgb(var(--brand-strong));
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    @apply btn border bg-white;
+    border-color: rgb(var(--border));
+    color: rgb(var(--text));
+  }
+
+  .btn-secondary:hover {
+    background: rgb(var(--brand-soft));
+    border-color: rgba(219, 39, 119, 0.3);
+  }
+
+  /* Chips / Tags */
+  .chip {
+    @apply rounded-full border px-3 py-1 text-xs transition;
+    background: rgb(var(--brand-soft));
+    color: rgb(var(--brand-strong));
+    border-color: rgba(219, 39, 119, 0.25);
+  }
+
+  .chip:hover {
+    transform: translateY(-1px);
+    border-color: rgba(219, 39, 119, 0.45);
+  }
+
+  /* Divisores */
+  .divider {
+    border-bottom: 1px solid rgba(219, 39, 119, 0.15);
+  }
+}
+
+/* ======================================================
+   UTILITÁRIOS EXTRAS
+   ====================================================== */
+@layer utilities {
+  .ring-brand {
+    box-shadow: 0 0 0 4px rgba(244, 114, 182, 0.35);
+  }
+
+  .text-muted {
+    color: rgb(var(--subtext));
+  }
+}
+
+
+
+
