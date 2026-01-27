@@ -3,201 +3,176 @@
 import { useEffect, useState } from "react";
 import { profile } from "@/app/data/profile";
 
-const navLinks = [
-  { href: "#sobre", label: "Sobre" },
-  { href: "#formacao", label: "Formação" },
-  { href: "#experiencias", label: "Experiências" },
-  { href: "#interesses", label: "Interesses" },
-  { href: "#habilidades", label: "Habilidades" },
-  
+const links = [
+  { label: "Sobre", href: "#sobre" },
+  { label: "Formação", href: "#formacao" },
+  { label: "Experiências", href: "#experiencias" },
+  { label: "Interesses", href: "#interesses" },
+  { label: "Habilidades", href: "#habilidades" },
+  { label: "Contato", href: "#contato" },
 ];
-
-function getInitials(name: string) {
-  const parts = name.trim().split(/\s+/).filter(Boolean);
-  const first = parts[0]?.[0] ?? "M";
-  const last = parts.length > 1 ? parts[parts.length - 1][0] : "C";
-  return (first + last).toUpperCase();
-}
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
-  // trava o scroll quando o menu está aberto
+  // trava o scroll quando menu mobile abre
   useEffect(() => {
-    if (!open) return;
-    const original = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    if (open) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "";
     return () => {
-      document.body.style.overflow = original;
+      document.body.style.overflow = "";
     };
   }, [open]);
 
-  // fecha com ESC
+  // fecha menu ao apertar ESC
   useEffect(() => {
-    function onKeyDown(e: KeyboardEvent) {
+    const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpen(false);
-    }
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  const initials = getInitials(profile.name || "Maria Clara");
+  const initials =
+    profile?.name
+      ?.split(" ")
+      .filter(Boolean)
+      .slice(0, 2)
+      .map((w) => w[0].toUpperCase())
+      .join("") || "ML";
 
   return (
-    <>
-      <header className="sticky top-0 z-50 border-b border-rose-200/60 bg-white/85 backdrop-blur">
-        <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 sm:px-5">
-          {/* Brand */}
-          <a href="#" className="flex items-center gap-2">
-            <div className="grid h-9 w-9 place-items-center rounded-full bg-rose-600 text-sm font-semibold text-white shadow-sm sm:h-10 sm:w-10">
-              {initials}
-            </div>
-
-            <div className="leading-tight">
-              <p className="text-sm font-semibold text-neutral-900">
-                Portfólio • <span className="text-rose-600">Medicina</span>
-              </p>
-              <p className="text-xs text-neutral-500">
-                {profile.university} • {profile.location}
-              </p>
-            </div>
-          </a>
-
-          {/* Desktop nav */}
-          <nav className="hidden items-center gap-6 text-sm text-neutral-600 md:flex">
-            {navLinks.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                className="rounded-lg px-2 py-1 transition hover:text-rose-700"
-              >
-                {l.label}
-              </a>
-            ))}
-          </nav>
-
-          {/* Right actions */}
-          <div className="flex items-center gap-2">
-            {/* Desktop CTA */}
-            <a
-              href="#contato"
-              className="hidden rounded-full bg-rose-600 px-5 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-rose-700 md:inline-flex"
-            >
-              Contato
-            </a>
-
-            {/* Mobile hamburger */}
-            <button
-              onClick={() => setOpen(true)}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-rose-200 bg-white shadow-sm transition hover:bg-rose-50 active:scale-[0.98] md:hidden"
-              aria-label="Abrir menu"
-            >
-              <svg
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-                fill="none"
-                className="text-rose-700"
-                aria-hidden="true"
-              >
-                <path
-                  d="M4 7h16M4 12h16M4 17h16"
-                  stroke="currentColor"
-                  strokeWidth="2.4"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </button>
+    <header className="sticky top-0 z-50 border-b border-rose-200/60 bg-white/85 backdrop-blur">
+      <div className="mx-auto flex max-w-5xl items-center justify-between px-5 py-3">
+        {/* LOGO */}
+        <a href="#" className="flex items-center gap-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-rose-500 text-sm font-semibold text-white">
+            {initials}
           </div>
-        </div>
-      </header>
 
-      {/* Mobile Drawer */}
+          <div className="leading-tight">
+            <p className="text-sm font-semibold text-neutral-900">
+              Portfólio <span className="text-rose-500">• Medicina</span>
+            </p>
+            <p className="text-xs text-neutral-500">
+              {profile.university} • {profile.location}
+            </p>
+          </div>
+        </a>
+
+        {/* LINKS DESKTOP */}
+        <nav className="hidden items-center gap-7 md:flex">
+          {links.slice(0, 5).map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              className="text-sm text-neutral-600 hover:text-rose-600 transition"
+            >
+              {l.label}
+            </a>
+          ))}
+
+          {/* BOTÃO CONTATO */}
+          <a
+            href="#contato"
+            className="rounded-full bg-rose-500 px-5 py-2 text-sm font-medium text-white hover:opacity-90 transition"
+          >
+            Contato
+          </a>
+        </nav>
+
+        {/* BOTÃO MENU MOBILE */}
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          className="inline-flex items-center justify-center rounded-xl border border-rose-200 bg-white p-2 text-rose-600 hover:bg-rose-50 transition md:hidden"
+          aria-label="Abrir menu"
+        >
+          {/* ícone hambúrguer */}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+          </svg>
+        </button>
+      </div>
+
+      {/* OVERLAY + MENU MOBILE */}
       {open ? (
-        <div className="fixed inset-0 z-[60] md:hidden">
-          {/* Backdrop */}
+        <div className="fixed inset-0 z-50 md:hidden">
+          {/* overlay */}
           <button
             className="absolute inset-0 bg-black/30"
             onClick={() => setOpen(false)}
             aria-label="Fechar menu"
           />
 
-          {/* Panel */}
-          <aside className="absolute right-0 top-0 h-full w-[86%] max-w-sm bg-white shadow-2xl">
-            {/* Header */}
-            <div className="flex items-center justify-between border-b border-rose-200/60 px-4 py-4">
-              <div className="flex items-center gap-2">
-                <div className="grid h-9 w-9 place-items-center rounded-full bg-rose-600 text-sm font-semibold text-white">
-                  {initials}
-                </div>
-                <div className="leading-tight">
-                  <p className="text-sm font-semibold text-neutral-900">
-                    Menu
-                  </p>
-                  <p className="text-xs text-neutral-500">
-                    {profile.university} • {profile.location}
-                  </p>
-                </div>
-              </div>
+          {/* painel */}
+          <div className="absolute right-3 top-3 w-[92%] max-w-sm rounded-2xl border border-rose-200 bg-white p-4 shadow-xl">
+            <div className="flex items-center justify-between">
+              <p className="text-sm font-semibold text-neutral-900">Menu</p>
 
               <button
+                type="button"
                 onClick={() => setOpen(false)}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-rose-200 bg-white transition hover:bg-rose-50"
-                aria-label="Fechar menu"
+                className="rounded-xl border border-rose-200 bg-white p-2 text-rose-600 hover:bg-rose-50 transition"
+                aria-label="Fechar"
               >
+                {/* X */}
                 <svg
-                  width="18"
-                  height="18"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
                   viewBox="0 0 24 24"
                   fill="none"
-                  className="text-rose-700"
-                  aria-hidden="true"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 >
-                  <path
-                    d="M6 6l12 12M18 6L6 18"
-                    stroke="currentColor"
-                    strokeWidth="2.4"
-                    strokeLinecap="round"
-                  />
+                  <path d="M18 6 6 18" />
+                  <path d="m6 6 12 12" />
                 </svg>
               </button>
             </div>
 
-            {/* Links */}
-            <div className="px-4 py-4">
-              <div className="rounded-2xl border border-rose-200/60 bg-rose-50/30 p-2">
-                {navLinks.map((l) => (
-                  <a
-                    key={l.href}
-                    href={l.href}
-                    onClick={() => setOpen(false)}
-                    className="flex items-center justify-between rounded-xl px-3 py-3 text-sm font-medium text-neutral-800 transition hover:bg-white"
-                  >
-                    {l.label}
-                    <span className="text-rose-600">›</span>
-                  </a>
-                ))}
-              </div>
-
-              {/* CTA mobile */}
-              <a
-                href="#contato"
-                onClick={() => setOpen(false)}
-                className="mt-4 inline-flex w-full items-center justify-center rounded-2xl bg-rose-600 px-4 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-rose-700"
-              >
-                Contato
-              </a>
-
-              <p className="mt-4 text-xs text-neutral-500">
-                © {new Date().getFullYear()} • Portfólio acadêmico.
-              </p>
+            <div className="mt-4 space-y-2">
+              {links.map((l) => (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  className="block rounded-xl border border-rose-100 bg-white px-4 py-3 text-sm text-neutral-700 hover:bg-rose-50 transition"
+                >
+                  {l.label}
+                </a>
+              ))}
             </div>
-          </aside>
+
+            <a
+              href="#contato"
+              onClick={() => setOpen(false)}
+              className="mt-4 block rounded-full bg-rose-500 px-5 py-3 text-center text-sm font-medium text-white hover:opacity-90 transition"
+            >
+              Ir para contato
+            </a>
+          </div>
         </div>
       ) : null}
-    </>
+    </header>
   );
 }
+
 
 
 
