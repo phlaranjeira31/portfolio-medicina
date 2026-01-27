@@ -24,12 +24,13 @@ export default function Hero() {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <a
-              href="#experiencias"
-              className="rounded-full bg-rose-500 px-5 py-2.5 text-sm font-medium text-white hover:opacity-90 transition"
-            >
-              Ver experiências
-            </a>
+           <a
+  href="#experiencias"
+  className="rounded-full bg-rose-200 px-5 py-2.5 text-sm font-medium text-rose-800 hover:bg-rose-300 transition"
+>
+  Ver experiências
+</a>
+
 
             <a
               href="#contato"
