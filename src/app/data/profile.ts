@@ -9,9 +9,7 @@ export const profile = {
 
 interests: [
   "Clínica Médica",
-  "Pediatria",
   "Ginecologia e Obstetrícia",
-  "Pesquisa Científica",
   "Cirurgia Vascular",
   "Neurocirurgia",
   "Cirurgia Plástica",
@@ -33,17 +31,17 @@ interests: [
     {
       title: "Liga Acadêmica (ex: Cardiologia)",
       org: "Instituição / Universidade",
-      period: "2026",
+      period: "Periodo",
       details: [
-        "(cru) Descreva em 1–2 linhas o que fez, frequência, atividades e aprendizados.",
+        "Descreva os detalhes...",
       ],
     },
     {
       title: "Monitoria / Extensão / Projeto",
-      org: "Instituição",
-      period: "2026",
+      org: "Instituição / Universidade",
+      period: "Periodo",
       details: [
-        "(cru) Adicione atividades, responsabilidades e resultados.",
+        "Descreva os detalhes...",
       ],
     },
   ],
