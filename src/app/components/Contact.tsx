@@ -12,10 +12,10 @@ export default function Contact() {
           <li>
             <span className="font-medium text-rose-700">Email:</span>{" "}
             <a
-              href="mailto:mariaclaralolobo@icloud.com"
+              href="mailto:mariaclaralobof@gmail.com"
               className="text-rose-600 hover:text-rose-700 hover:underline"
             >
-              mariaclaralolobo@icloud.com
+              mariaclaralobof@gmail.com
             </a>
           </li>
 
