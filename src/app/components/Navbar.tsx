@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import BotaoPDF from "./BotaoPDF";
 
 const links = [
   { label: "Sobre", href: "#sobre" },
@@ -62,6 +63,8 @@ export default function Navbar() {
           >
             Contato
           </a>
+
+          <BotaoPDF />
         </nav>
 
         {/* Mobile button */}
