@@ -85,26 +85,7 @@ export default function CurriculoPage() {
             </div>
           </Card>
 
-          {/* Experiências */}
-          <Card>
-            <SectionTitle>Experiências</SectionTitle>
-            <div className="mt-4 grid gap-4">
-              {profile.experiences.map((x) => (
-                <div key={x.title}>
-                  <div className="flex flex-wrap items-baseline justify-between gap-2">
-                    <p className="font-medium text-neutral-900">{x.title}</p>
-                    <p className="text-xs text-neutral-600">{x.period}</p>
-                  </div>
-                  <p className="text-sm text-neutral-700">{x.org}</p>
-                  <ul className="mt-3 list-disc pl-5 text-sm text-neutral-700">
-                    {x.details.map((d) => (
-                      <li key={d}>{d}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </Card>
+          
 
           {/* Certificações */}
           <Card>

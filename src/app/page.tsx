@@ -3,7 +3,6 @@ import Hero from "@/app/components/Hero";
 import About from "@/app/components/About";
 import Objective from "@/app/components/Objective";
 import Education from "@/app/components/Education";
-import Experience from "@/app/components/Experience";
 import Interests from "@/app/components/Interests";
 import Skills from "@/app/components/Skills";
 import Contact from "@/app/components/Contact";
@@ -17,7 +16,6 @@ export default function Home() {
         <About />
         <Objective />
         <Education />
-        <Experience />
         <Interests />
         <Skills />
         <Contact />

@@ -75,7 +75,7 @@ export default function Hero() {
             <ul className="mt-3 space-y-2 text-sm text-neutral-700">
               <li>• Portfólio acadêmico (atualizável)</li>
               <li>• Foco em formação, ética e desenvolvimento clínico</li>
-              <li>• Organização para ligas, monitorias e pesquisa</li>
+              <li>• Interesse em organização para ligas, monitorias e pesquisa</li>
             </ul>
           </div>
         </div>

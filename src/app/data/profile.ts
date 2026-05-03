@@ -12,7 +12,6 @@ interests: [
   "Ginecologia e Obstetrícia",
   "Cirurgia Vascular",
   "Neurocirurgia",
-  "Cirurgia Plástica",
 ],
 
   education: [
@@ -27,24 +26,6 @@ interests: [
     },
   ],
 
-  experiences: [
-    {
-      title: "Liga Acadêmica (ex: Cardiologia)",
-      org: "Instituição / Universidade",
-      period: "Periodo",
-      details: [
-        "Descreva os detalhes...",
-      ],
-    },
-    {
-      title: "Monitoria / Extensão / Projeto",
-      org: "Instituição / Universidade",
-      period: "Periodo",
-      details: [
-        "Descreva os detalhes...",
-      ],
-    },
-  ],
 
   certifications: [
     {
