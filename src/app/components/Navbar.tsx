@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import BotaoPDF from "./BotaoPDF";
+import BotaoPDF from "@/app/components/BotaoPDF";
 
 const links = [
   { label: "Sobre", href: "#sobre" },
